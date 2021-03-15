@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>soal no.3 irsyad ali jcwm-0506</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(0, 0, 0);
+            border-collapse: collapse;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <div id="body" style="width: 100vw;height: 100vh; background-color:rgb(247, 252, 251)">   
+            <h1>form user</h1>
+            <form>
+                <div> 
+                    <input type= "text" id="nama" placeholder="username"
+                </div>
+                <div>
+                    <input type= "text" id="email" placeholder="Email">
+                </div>
+                <div>
+                    <input type="tel" id="role" placeholder="role">
+                </div>
+            </form>
+                <button type="button" onclick="onBtnDaftar()">hajar</button>
+                <table>
+                        <thead>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>role</th>
+                            <th>action</th>
+                        </thead>
+
+                        <tbody id="list-nama">
+
+
+                        
+                        </tbody>
+                </table>
+        </div>
+    </center>
+    
+
+</body>
+<script>
+    // properti {nama, email, alamat}
+    let dataSiswa = [
+
+    ]
+    // fungsi untuk menyimpan data
+    function onBtnDaftar() {
+        let innama = document.getElementById("nama").value
+        let inemail = document.getElementById("email").value
+        let inrole = document.getElementById("role").value
+		// alert(`Tes input nama: ${nama} ${email} ${role}`)
+        // insert data dengan push
+        dataSiswa.push({ nama: innama, email: inemail, role: inrole })
+        console.log(dataSiswa)
+
+        document.getElementById('nama').value = null
+        document.getElementById('email').value = null
+        document.getElementById('role').value = null
+        printdata()
+    }
+
+    function printdata() {
+        let htmllist = ''
+        dataSiswa.forEach((value, idx) => {
+            htmllist += `<tr>
+                <td>${idx + 1}</td>
+                <td>${value.nama}</td>
+                <td>${value.email}</td>
+                <td>${value.role}</td>
+                <td><input type="button" value="Save"><input type="button" value="Cancel" > </td>
+                        </tr>`
+
+        })
+
+        // delet
+    function onBtDelete(index) {
+        data.splice(index, 1)
+        printToDo()
+    }
+
+    function onBtEdit(index) {
+        printToDo(index)
+        //     Update form cara 1
+         let newWaktu = prompt('Masukkan Tanggal Baru :', data[index].date)
+         let newKegiatan = prompt('Masukkan Kegiatan Baru :', data[index].do)
+         let newLokasi = prompt('Masukkan Kegiatan Baru :', data[index].location)
+
+         if (confirm('Mau simpan perubahan ?')) {
+             data[index].date = newWaktu
+             data[index].do = newKegiatan
+             data[index].location = newLokasi
+             printToDo()
+            alert('tersimpan')
+            }
+    }
+
+    printToDo()
+        // innerHTML = untuk memasukan value kedalam elemen html
+        document.getElementById('list-nama').innerHTML = htmllist
+    }
+</script> 
+
+</html>
